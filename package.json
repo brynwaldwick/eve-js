@@ -1,0 +1,23 @@
+{
+  "name": "eve-js",
+  "version": "0.0.1",
+  "description": "A simple wrapper for using ethereum in the browser",
+  "main": "index.js",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "cjsx --bare -o lib -c src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/brynwaldwick/eve-js.git"
+  },
+  "keywords": [
+    "ethereum"
+  ],
+  "author": "Bryn Waldwick <bryn@prontotype.us> (https://prontotype.us)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brynwaldwick/eve-js/issues"
+  },
+  "homepage": "https://github.com/brynwaldwick/eve-js#readme"
+}
