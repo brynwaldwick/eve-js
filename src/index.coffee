@@ -26,7 +26,7 @@ exports.parseFunctionSignature = (fn_string) ->
 
 exports.parseProtocolUrl = (url) ->
     [path, query] = split('?')
-    [protocol, to] = path.split(':')
+    [protocol, address] = path.split(':')
     q = qs.decode query
     if q.fn?
         input_types = {}
@@ -66,7 +66,7 @@ exports.parseProtocolUrl = (url) ->
             to: address
             value: q.value
             gas: q.gas
-
+            data: q.data
         }
 
     return tx
