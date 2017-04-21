@@ -25,8 +25,8 @@ exports.parseFunctionSignature = (fn_string) ->
 # https://github.com/ethereum/EIPs/issues/67
 
 exports.parseProtocolUrl = (url) ->
-    [path, query] = split('?')
-    [protocol, to] = path.split(':')
+    [path, query] = url.split('?')
+    [protocol, address] = path.split(':')
     q = qs.decode query
     if q.fn?
         input_types = {}
@@ -66,7 +66,15 @@ exports.parseProtocolUrl = (url) ->
             to: address
             value: q.value
             gas: q.gas
+            data: q.data
+        }
 
+    else
+        tx = {
+            to: address
+            value: q.value
+            gas: q.gas
+            from: q.from
         }
 
     return tx
