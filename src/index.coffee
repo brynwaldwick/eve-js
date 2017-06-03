@@ -5,6 +5,8 @@ if window?.web3?
         # Use Mist/MetaMask's provider
         web3 = new Web3 window.web3.currentProvider
         window.web3 = web3
+    # else
+    #     window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"))
 
 else
     console.log 'Warning: no web3 exists in the window... :('
@@ -94,12 +96,12 @@ exports.buildAPIWithABI = (abi) ->
 
     abi.map (fn) ->
         _exports[fn.name] = (address, args..., _options, cb) ->
-            console.log 'address', args..., _options, fn.name
+            console.log 'address', address, args..., _options, fn.name
             window.web3.eth.contract(abi).at address, (err, Contract) ->
 
                 options = Object.assign {}, {
                     to: address
-                    from: web3.eth.accounts[0]
+                    from: window.web3.eth.accounts[0]
                     value: 0
                     gas: 10000
                 }, _options
